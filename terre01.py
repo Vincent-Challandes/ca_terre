@@ -7,5 +7,11 @@ print(nom)
 
 # solution avec module os
 import os
-nom_01 = os.path.basename(chemin)
+nom_01 = os.path.basename(__file__)
 print(nom_01)
+
+# solution avec module sys
+import sys
+nom = sys.argv
+for i in nom:
+    print(i)
