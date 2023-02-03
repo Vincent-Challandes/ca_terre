@@ -30,14 +30,11 @@ if nombre_arguments == 2:
                 else:
                     heures = heures
 
-             #elif am_pm == "PM":
              else:
                  if heures == 12:
                      heures = heures
                  else:
                     heures = heures + 12
-             #else:
-                 #print("erreur utilisez AM/PM")
 
             # on force dans le cas ou les minutes ou les heures sont de zéro à 9 à écrire le premier zéro
              if 0 <= minutes <= 9:
