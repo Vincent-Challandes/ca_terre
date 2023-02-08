@@ -1,6 +1,6 @@
 # Function
-def print_alphabet():
-    for i in alphabet:
+def print_alphabet(a):
+    for i in a:
         i = i.lower()
         print(i, end="")
     print()
@@ -10,5 +10,4 @@ def print_alphabet():
 alphabet = "AbcdefghijKlmnopqrstuvwxyz"
 
 # Resolution
-print_alphabet()
-
+print_alphabet(alphabet)
