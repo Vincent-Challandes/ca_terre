@@ -1,16 +1,22 @@
+## Module, Function and Variables globals
 import sys
 
-# on récupère les arguments
-arguments = sys.argv
+def chaine_inversee(a):
+    result = a[::-1]
+    return result
 
-# on check le nombre d'argument
-nombre_arguments = len(arguments)
+## Error handling
 
-# si on nous a transmis 1 arguement (Notre chaine de caractère) on va print l'inverse de la chaine de caractère
-if nombre_arguments == 2:
-    chaine_de_caractere = arguments[1]
-    print(chaine_de_caractere[::-1]) # on passe à travers notre chaine de caractère comme un liste [::-1] qui veut dire du début à la fin avec un pas de -1 soit de la fin au début
-    
-else:
-     print("erreur veuillez entrer une chaine de caractère entre des \" \" ")
+if len(sys.argv) != 2:
+    print("erreur : veuillez entrer une chaine de caractère entre guillemet \"Ma chaine de caractère\"")
+    sys.exit()
 
+
+## Resolution
+
+resultat = chaine_inversee(sys.argv[1])
+
+
+## Display
+
+print(resultat)
