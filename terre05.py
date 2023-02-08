@@ -1,32 +1,43 @@
+## Module, Function and Variables globals
+
 import sys
 
-# on récupère les arguments
-arguments = sys.argv
+def division(a, b):
+     reslutat = a // b
+     return reslutat
 
-# on check les nombre d'argument
-nombre_arguments = len(arguments)
+def reste(a, b):
+     reste = a % b
+     return reste
 
-# si on nous a transmis 2 nombre on passe au opération
-if nombre_arguments == 3:
-    arg1 = arguments[1]
-    arg2 = arguments[2]
 
-    # on check que nos 2 arguments soit des nombres
-    if arg1.isdigit() and arg2.isdigit():
-        
-        # convertir nos argument en integer
-        arg1 = int(arg1)
-        arg2 = int(arg2)
-        
-        # on mais la condition pour qu'on ai arg1 plus grand que arg2 et pas de 0
-        if arg1 > arg2 and arg2 > 0:
-            reslutat = arg1 // arg2
-            reste = arg1 % arg2
-            print(f"résultat : {reslutat}")
-            print(f"reste : {reste}")
-        else:
-            print("erreur de calcul")
-    else:
-        print("erreur pas des nombres")
-else:
-    print("erreur pas le bon nombre d'arguments")
+## Error handling
+
+# check si on nous a transmis 2 arguments
+if len(sys.argv) != 3:
+    print("erreur : Pas le bon nombre d'arguments")
+    sys.exit()
+
+# on check que nos 2 arguments soit des nombres
+if not sys.argv[1].isdigit() or not sys.argv[2].isdigit():
+    print("erreur : Ce n'est pas deux nombres")
+    sys.exit()
+
+# on mais la condition pour qu'on ai arg1 plus grand que arg2 et pas de 0
+arg1, arg2 = int(sys.argv[1]), int(sys.argv[2])
+if arg1 < arg2 or arg2 == 0:
+    print("erreur : premier nombre plus grand que le second ou second égal à zéro")
+    sys.exit()
+
+
+# Resolution 
+
+resultat = division(arg1, arg2)
+reste = reste(arg1, arg2)
+
+
+## Display
+          
+print(f"résultat : {resultat}")
+print(f"reste : {reste}")
+       
