@@ -1,20 +1,29 @@
+## Modules, Functions and Variables globals
 import sys
 
-# on récupère les arguments
-arguments = sys.argv
+def taille_chaine(a):
+     nb_caratere = 0
+     for i in a:
+          nb_caratere += 1
+     return nb_caratere
 
-# on check le nombre d'argument
-nombre_arguments = len(arguments)
 
-# si on nous a transmis 1 arguement (Notre chaine de caractère)
-if nombre_arguments == 2:
-    chaine_de_caractere = arguments[1]
-    if chaine_de_caractere.lstrip("-").isdigit():
-         print("erreur il s'agit d'un nombre on souhaite une chaine de caractère entre des \" \" ")
-    else:
-         # on check le nombre de caractère
-         nombre_caractere = len(chaine_de_caractere)
-         print(nombre_caractere)
-    
-else:
-     print("erreur veuillez entrer une chaine de caractère entre des \" \" ")
+## Error handling
+
+if len(sys.argv) != 2:
+     print("erreur : veuillez entrer une chaine de caractère entre guillemet \"Ma chaine de caractère\"")
+     sys.exit()
+
+if sys.argv[1].lstrip("-").isdigit():
+     print("erreur : il s'agit d'un nombre on souhaite une chaine de caractère entre des \" \" ")
+     sys.exit()
+
+
+## Resolution
+
+resultat = taille_chaine(sys.argv[1])
+
+
+## Display
+
+print(resultat)
