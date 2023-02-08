@@ -1,13 +1,17 @@
 # Function
 def print_alphabet(a):
+    result = ""
     for i in a:
         i = i.lower()
-        print(i, end="")
-    print()
+        result += i
+    return result
 
 # Variables
 #alphabet = ["A", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 alphabet = "AbcdefghijKlmnopqrstuvwxyz"
 
 # Resolution
-print_alphabet(alphabet)
+resultat = print_alphabet(alphabet)
+
+# Display
+print(resultat)
