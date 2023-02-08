@@ -1,25 +1,31 @@
+## Module Function and Variables globals
+
 import sys
 
-# on récupère la liste des arguments
-arguments = sys.argv
+def pair_impair():
+    if nombre % 2 == 0:
+        return "pair"
+    else:
+        return "impair"
+
+
+## Error handling
 
 # on cherche à savoir si un argument à été donné
-# pour ça on va compté le nombre d'argument si nombre argument > 1 c'est qu'un argument à été donné
-nombre_arguments = len(arguments)
+if len(sys.argv) != 2:
+    print("erreur : Pas le bon nombre d'argument transmis au progamme.")
+    sys.exit()
 
-# on détermine si il ya bien eu un argument donné
-if nombre_arguments == 2:
-    argument = arguments[1]
+# on détermine si il s'agit d'un nombre ou pas (positif et négatif)
+if not sys.argv[1].lstrip("-").isdigit():
+    print("erreur : Ce n'est pas un nombre.")
+    sys.exit()
 
-    # on détermine si il s'agit d'un nombre ou pas (positif et négatif) 
-    if argument.lstrip("-").isdigit():
-        argument = int(argument)
-        if argument % 2 == 0:
-            print("pair")
-        else:
-            print("impair")
-    else:
-        print("ce n'est pas un nombre.")        
-else:
-    print("Pas le bon nombre d'argument transmis au progamme.")
-    
+## Resolution
+
+nombre = int(sys.argv[1])
+resultat = pair_impair()
+
+## Display
+
+print(resultat)
