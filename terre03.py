@@ -2,9 +2,10 @@
 import sys
 
 def affiche_alphabet_depuis():
+    result = ""
     for i in alphabet[indice_départ:]: # on boucle dans notre liste alphabet depuis l'indice de départ jusqu'a la fin
-        print(i, end = "") # on print sur la même ligne
-    print() # retour a la ligne
+        result += i
+    return result
  
 alphabet = "AbcdefghijKlmnopqrstuVwxyz".lower() 
 
@@ -29,4 +30,8 @@ indice_départ = alphabet.index(lettre_depart) # on recherche la position de cet
 
 
 ## Resolution
-affiche_alphabet_depuis()
+resultat = affiche_alphabet_depuis()
+
+
+## Display
+print(resultat)
