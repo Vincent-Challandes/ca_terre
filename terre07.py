@@ -19,9 +19,13 @@ if sys.argv[1].lstrip("-").isdigit():
      sys.exit()
 
 
+## Parsing
+chaine_de_caractere = sys.argv[1]
+
+
 ## Resolution
 
-resultat = taille_chaine(sys.argv[1])
+resultat = taille_chaine(chaine_de_caractere)
 
 
 ## Display
