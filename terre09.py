@@ -1,23 +1,37 @@
+## Modules and Functions
+
 import sys
 
-# on récupère les arguments
-arguments = sys.argv
+def racine_carre(a):
+     result = a ** 0.5
+     return result
 
-# on check le nombre d'argument
-nombre_arguments = len(arguments)
 
-# si on nous a transmis 1 arguements (notre nombre pour notre calcul de racine carré)
-if nombre_arguments == 2:
-    nombre_1 = arguments[1]
-    # on contrôle que ce soit un nombre entier positif
-    if nombre_1.isdigit():
-         nombre_1 = int(nombre_1)
-         resultat = nombre_1 ** 0.5
-         print(resultat) # résultat du float donc nombre décimal
-         resultat = int(resultat) # on ramene le float à un integer
-         print(resultat) # résultat du integer donc nombre entier 
-    else:
-         print("erreur l'arguement doit être un nombre entier positif")
+## Error handling
+
+# chek nb arguements
+if len(sys.argv) != 2:
+    print("erreur : Pas le bon nombre d'arguments veuillez entrer un nombre entier positif")
+    sys.exit()
+
+# on contrôle que ce soit un nombre entier positif
+if not sys.argv[1].isdigit():
+     print("erreur : L'arguement doit être un nombre entier positif")
+     sys.exit()
     
-else:
-     print("erreur pas le bon nombre d'arguments")
+    
+## Parsing
+
+nombre = int(sys.argv[1])
+
+
+## Resolution
+
+resultat = racine_carre(nombre)
+
+
+## Display
+
+print(resultat) # résultat du float donc nombre décimal
+resultat = int(resultat) # on ramene le float à un integer
+print(resultat) # résultat du integer donc nombre entier
