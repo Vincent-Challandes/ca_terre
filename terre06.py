@@ -12,9 +12,14 @@ if len(sys.argv) != 2:
     sys.exit()
 
 
+## Parsing
+
+chaine_recu = sys.argv[1]
+
+
 ## Resolution
 
-resultat = chaine_inversee(sys.argv[1])
+resultat = chaine_inversee(chaine_recu)
 
 
 ## Display
