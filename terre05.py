@@ -24,10 +24,14 @@ if not sys.argv[1].isdigit() or not sys.argv[2].isdigit():
     sys.exit()
 
 # on mais la condition pour qu'on ai arg1 plus grand que arg2 et pas de 0
-arg1, arg2 = int(sys.argv[1]), int(sys.argv[2])
-if arg1 < arg2 or arg2 == 0:
+if int(sys.argv[1]) < int(sys.argv[2]) or int(sys.argv[2]) == 0:
     print("erreur : premier nombre plus grand que le second ou second égal à zéro")
     sys.exit()
+
+
+# Parsing
+
+arg1, arg2 = int(sys.argv[1]), int(sys.argv[2])
 
 
 # Resolution 
