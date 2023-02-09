@@ -21,9 +21,14 @@ if not sys.argv[1].lstrip("-").isdigit():
     print("erreur : Ce n'est pas un nombre.")
     sys.exit()
 
-## Resolution
+
+## Parsing
 
 nombre = int(sys.argv[1])
+
+
+## Resolution
+
 resultat = pair_impair()
 
 ## Display
