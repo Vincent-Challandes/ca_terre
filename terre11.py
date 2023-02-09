@@ -1,54 +1,71 @@
+## Modules and Functions
+
 import sys
 
-# on récupère les arguments
-arguments = sys.argv
 
-# on check le nombre d'argument
-nombre_arguments = len(arguments)
-
-# si on nous a transmis 1 arguements (notre heure)
-if nombre_arguments == 2:
-    heure_saisi = arguments[1]
-    heures = heure_saisi[0:2]
-    minutes = heure_saisi[3:]
-    deux_point = heure_saisi[2:3]
-    nombre_caractere = len(heure_saisi)
-
+### fonction de contrôle
+def ctrl_format(a):
     # on check qu'on nous ai bien donner une heure au format 24 de 00:00 à 23:59
-    if minutes.isdigit() and heures.isdigit() and deux_point == ":" and nombre_caractere == 5:
-         heures = int(heures)
-         minutes = int(minutes)
+    if not a[3:].isdigit() or not a[0:2].isdigit() or not a[2:3] == ":" or not len(a) == 5:
+        print("erreur : Pas le bon format d'argument veuiller entrez une heure entre \"00:00\" et \"23:59\"")
+        sys.exit()
 
-         # on contrôle que l'heure saisi soit entre 00:00 et 23:59
-         if 0 <= minutes <= 59 and 0 <= heures <= 23:
-             
-            # on convertit le format 24h en 12h
-             if  heures < 12:
-                am_pm = "AM" 
-                if heures == 0:
-                    heures = 12
-             else:
-                 am_pm = "PM"
-                 if heures == 12:
-                     heures = heures
-                 else:
-                    heures = heures -12
 
-            # on force dans le cas ou les minutes ou les heures sont de zéro à 9 écrire le premier zéro
-             if 0 <= minutes <= 9:
-                 minutes = f"0{minutes}"
-            
-             if 1 <= heures <= 9:
-                 heures = f"0{heures}" 
-        
-             resultat = f"{heures}:{minutes}{am_pm}"
-             print(resultat)    
+def ctrl_heure_exist(a):
+    if not 0 <= int(a[3:]) <= 59 or not 0 <= int(a[0:2]) <= 23:
+        print("erreur : Heure inexistante veuillez entrer une heure entre \"00:00\" et \"23:59\" inclu")
+        sys.exit()
 
-         else:
-            print("erreur veuillez entrer une heure entre 00:00 et 23:59 inclu")
-        
+
+### fonction de résolution
+def convertisseur_24_12(heures):
+    if  heures < 12:
+        am_pm = "AM" 
+        if heures == 0:
+            heures = 12
     else:
-         print("erreur pas le bon format d'argument veuiller entrez une heure entre 00:00 et 23:59")     
+        am_pm = "PM"
+        if heures == 12:
+            heures = heures
+        else:
+            heures = heures -12
+    return heures, am_pm
 
-else:
-     print("erreur pas le bon nombre d'arguments veuillez saisir une heure au format 24h")
+# cette fonction remet l'heure dans l'ordre et au bon format
+def heure_format_12(heures, minutes, am_pm):
+    heures = str(heures).zfill(2)
+    minutes = str(minutes).zfill(2)
+    return f"{heures}:{minutes}{am_pm}"
+
+
+## Error handling
+
+# check si on nous a transmis 1 arguements (notre heure)
+if len(sys.argv) != 2:
+    print("erreur : Pas le bon nombre d'arguments veuillez saisir une heure au format 24h, \"23:59\"")
+    sys.exit()
+
+# check format de l'argument 
+ctrl_format(sys.argv[1])
+
+# check que l'argument soit bien une heure au format 24h
+ctrl_heure_exist(sys.argv[1])
+ 
+                 
+## Parsing
+
+heures = int(sys.argv[1][:2])
+minutes = int(sys.argv[1][3:])
+
+
+
+## Resolution
+
+heures_converti, am_pm = convertisseur_24_12(heures)
+
+resultat = heure_format_12(heures_converti, minutes, am_pm)
+
+
+## Display
+
+print(resultat)
